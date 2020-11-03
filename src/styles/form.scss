@@ -1,0 +1,115 @@
+.form{
+    width: 100%;
+    padding: $fluid-padding;
+    background: white;
+
+    .form-field{
+        padding: $fluid-padding 0;
+        margin: 0 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+
+        .form-label{
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .form-input{
+            border: none;
+            background-color: $secondary-bg;
+            padding: $fluid-padding;
+            border-bottom: 2px solid gray;
+            outline: none;
+
+            &:focus{
+                background: white;
+            }
+        }
+
+        .indicator{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4px;
+            
+
+            span {
+                width: 100%;
+                border: 0;
+                height: 7px;
+                background: rgb(230, 228, 228);
+                border-radius: 1rem;
+
+            }
+
+            span:nth-child(2){
+                margin: 0 5px;
+            }
+
+            &.weak{
+                span:first-child{
+                    background: red;
+                }
+            }
+
+            &.medium{
+                span:first-child{
+                    background: red;
+                }
+                span:nth-child(2){
+                    background: yellow;
+                }
+            }
+
+            &.strong{
+                span:first-child{
+                    background: red;
+                }
+                span:nth-child(2){
+                    background: yellow;
+                }
+                span:last-child{
+                    background: green;
+                }
+            }
+        }
+
+        .passwordVisibility{
+            position: absolute;
+            right: 0%;
+            top: 3rem;
+            width: 40px;
+        }
+    }
+}
+
+
+@media only screen and (min-width: 500px){
+    .form{
+        .form-field{
+            .passwordVisibility{
+                top: 3.5rem;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 800px){
+    .form {
+        width: 80%
+    }
+}
+
+@media only screen and (min-width: 1100px){
+    .form{
+        width: 60%;
+        
+        .form-field{
+            .passwordVisibility{
+                top: 4rem;
+            }
+        }
+    }
+}

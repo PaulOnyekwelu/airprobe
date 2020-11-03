@@ -1,0 +1,33 @@
+@import './styles/variables';
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:  'Open Sans',sans-serif, 'Roboto', 'Fira Sans';
+  color: $base-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: $font-size;
+}
+
+.App{
+  width: 100vw;
+  max-width: 1440px;
+}
+
+.app_main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@import './styles/utility';
+@import './styles/header';
+@import './styles/nav.scss';
+@import './styles/form.scss';

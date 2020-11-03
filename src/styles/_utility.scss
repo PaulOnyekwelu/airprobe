@@ -1,0 +1,38 @@
+#showMenu {
+    display: flex;
+}
+
+#show{
+    display: block;
+}
+
+#selected{
+    color: white;
+    background: $base-color;
+}
+
+.button{
+    padding: $fluid-padding;
+    margin: 1rem;
+    background: white;  
+    color: $base-color;
+    font-size: 18px;
+    font-weight: bold;
+    width: 50%;
+    border: 1.5px solid $base-color;
+
+    &:active{
+        background: $base-color;
+        color: white;
+        outline: none;
+    }
+
+    &:focus{
+        outline: none;
+    }
+}
+
+.error-field, .isRequired{
+    color: red;
+    font-size: 0.8rem;
+}

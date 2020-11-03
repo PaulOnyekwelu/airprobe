@@ -1,0 +1,46 @@
+.nav {
+	min-width: 100%;
+	position: absolute;
+	left: 0;
+	top: 60px;
+	background: white;
+	z-index: 1;
+	box-shadow: 0 0px 1px #777;
+
+	display: none;
+	width: 100%;
+	margin-right: 5%;
+	padding: $fluid-padding;
+	flex-direction: column;
+
+    .nav_items{
+        display: flex;
+		justify-content: center;
+
+        .nav__links{
+            text-decoration: none;
+			color: $base-color;
+			font-size: 18px;
+			padding: 0.7rem 3rem;
+			
+			&:active, &:hover{
+				color: white;
+				background: $base-color;
+				border-radius: 3px;
+			}
+
+        }
+    }
+}
+
+@media only screen and (min-width: 768px) {
+	.nav {
+		position: unset;
+        box-shadow: unset;
+        display: flex;
+        flex-direction: row;
+		min-width: 25%;
+		margin-right: $fluid-margin;
+		background-color: unset;
+	}
+}
