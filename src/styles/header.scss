@@ -8,9 +8,7 @@
     display: flex;
     justify-content: space-between;
     padding: 0 $fluid-padding;
-    -webkit-box-shadow: 0 1px 1px #777;
-    -moz-box-shadow: 0 1px 1px  #777;
-    box-shadow: 0 0px 2px  #777;
+    box-shadow: 0 0px 2px  $base-color;
 
     .header_logoBlock{
         padding-right: 1rem;

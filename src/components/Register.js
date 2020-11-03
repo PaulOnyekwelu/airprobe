@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import useUnsavedWarning from "../hooks/useUnsavedWarning";
+import {registerUser} from "../store/reducer/user";
 
-const Register = () => {
+const Register = ({registerUser}) => {
 	const RegisterForm = {
 		username: "",
 		firstName: "",
@@ -57,7 +60,7 @@ const Register = () => {
 
 	const onSubmitHandler = e => {
 		e.preventDefault();
-		console.log(formData);
+		registerUser(formData);
 		isPristine();
 	};
 	const onChangeHandler = e => {
@@ -174,6 +177,12 @@ const Register = () => {
 	);
 };
 
-Register.propTypes = {};
+Register.propTypes = {
+	registerUser: PropTypes.func.isRequired,
+};
 
-export default Register;
+const mapStateToProps = state => ({
+
+})
+
+export default connect(mapStateToProps, { registerUser })(Register);

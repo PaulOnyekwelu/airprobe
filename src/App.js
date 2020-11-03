@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import { toast } from "react-toastify";
@@ -10,13 +10,11 @@ import Register from "./components/Register";
 
 toast.configure();
 function App() {
-	const [showMenu, toggleMenu] = useState(false);
-
 	return (
 		<Provider store={store}>
 			<BrowserRouter>
 				<div className="App">
-					<Header toggleMenu={toggleMenu} showMenu={showMenu} />
+					<Header />
 				</div>
 				<div className="app_main">
 					<Switch>

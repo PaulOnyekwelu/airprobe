@@ -20,11 +20,15 @@
             border: none;
             background-color: $secondary-bg;
             padding: $fluid-padding;
-            border-bottom: 2px solid gray;
+            border-bottom: 2px solid $base-color;
             outline: none;
 
             &:focus{
                 background: white;
+            }
+
+            &::placeholder{
+                color: $base-color;
             }
         }
 
