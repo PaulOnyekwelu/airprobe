@@ -72,7 +72,7 @@ const Login = ({loginUser, history}) => {
 					)}
 				</span>
 			</div>
-			<input className="button" type="submit" value="Update Info" />
+			<input className="button" type="submit" value="Login" />
 		</form>
 	);
 };

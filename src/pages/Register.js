@@ -3,15 +3,13 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import useUnsavedWarning from "../hooks/useUnsavedWarning";
-import {registerUser} from "../store/reducer/user";
+import { registerUser } from "../store/reducer/user";
 import { withRouter } from "react-router-dom";
-import FormItem from "../components/FormItem";
 
-const Register = ({registerUser, history}) => {
+
+const Register = ({ registerUser, history }) => {
 	const RegisterForm = {
 		username: "",
-		firstName: "",
-		lastName: "",
 		password: "",
 		repeatPassword: "",
 	};
@@ -20,9 +18,10 @@ const Register = ({registerUser, history}) => {
 	const [invalidPasswordFormat, setInvalidPasswordFormat] = useState(false);
 	const [invalidRepeatPassword, setInvalidRepeatPassword] = useState(false);
 	const [passwordStrength, setPasswordStrength] = useState(null);
-	const { firstName, lastName, username, password, repeatPassword } = formData;
+
+	const { username, password, repeatPassword } = formData;
 	const [unSavedPrompt, isDirty, isPristine] = useUnsavedWarning();
-	
+
 	const passwordValidation = e => {
 		let userPassword = e ? e.target.value : password;
 		const checkCapital = userPassword.match(/[A-Z]/) !== null;
@@ -63,8 +62,8 @@ const Register = ({registerUser, history}) => {
 	const onSubmitHandler = e => {
 		e.preventDefault();
 		isPristine();
-		registerUser(formData, history);
-		setFormData(RegisterForm);
+		if(!passwordValidation() || !repeatPasswordValidation()) return;
+		registerUser({ username, password }, history);
 	};
 	const onChangeHandler = e => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -73,11 +72,19 @@ const Register = ({registerUser, history}) => {
 
 	return (
 		<form className="form" method="POST" onSubmit={onSubmitHandler}>
-			<FormItem title="First name" name="firstName" type="text" value={firstName} onChangeHandler={onChangeHandler} />
-			<FormItem title="Last name" name="lastName" type="text" value={lastName} onChangeHandler={onChangeHandler} />
-			<FormItem title="Username" name="username" type="text" value={username} onChangeHandler={onChangeHandler} />
-			<FormItem title="Username" name="username" type="text" value={username} onChangeHandler={onChangeHandler} />
-
+			<div className="form-field">
+				<label className="form-label" htmlFor="username">
+					Username
+				</label>
+				<input
+					className="form-input"
+					type="text"
+					name="username"
+					value={username}
+					onChange={onChangeHandler}
+					required
+				/>
+			</div>
 			<div className="form-field">
 				<label className="form-label" htmlFor="password">
 					Password
@@ -147,8 +154,6 @@ Register.propTypes = {
 	registerUser: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = state => ({
-
-})
+const mapStateToProps = state => ({});
 
 export default connect(mapStateToProps, { registerUser })(withRouter(Register));

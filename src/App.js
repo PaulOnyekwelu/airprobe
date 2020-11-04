@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useLayoutEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import { toast } from "react-toastify";
@@ -12,6 +12,12 @@ const Login = lazy(() => import("./pages/Login"));
 
 toast.configure();
 function App() {
+
+	useLayoutEffect(() => {
+		// const user = localStorage.getItem()
+	})
+
+
 	return (
 		<Provider store={store}>
 			<BrowserRouter>
@@ -31,5 +37,7 @@ function App() {
 		</Provider>
 	);
 }
+
+
 
 export default App;
