@@ -6,9 +6,9 @@ import { connect } from "react-redux";
 import { logoutUser } from "../store/reducer/user";
 import { withRouter } from "react-router-dom";
 
-const Nav = ({ showMenu, toggleMenu, isLoggedIn, username, logoutUser, history }) => {
+const Nav = ({ showMenu, toggleMenu, isLoggedIn, logoutUser, history }) => {
 	const logout = () => {
-		logoutUser(username, history);
+		logoutUser(history);
 	};
 	return (
 		<IconContext.Provider value={{ size: "1rem", color: "rgb(38,47,113)" }}>
@@ -42,12 +42,10 @@ Nav.propTypes = {
 	showMenu: PropTypes.bool.isRequired,
 	toggleMenu: PropTypes.func.isRequired,
 	isLoggedIn: PropTypes.bool.isRequired,
-	username: PropTypes.string,
 };
 
 const mapStateToProps = state => ({
 	isLoggedIn: state.user.isLoggedIn,
-	username: state.user.user.username,
 });
 
 export default connect(mapStateToProps, { logoutUser })(withRouter(Nav));

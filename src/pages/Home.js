@@ -2,16 +2,42 @@ import React from "react";
 import { connect } from "react-redux";
 import Login from "./Login";
 
+const Home = ({ isLoggedIn, users }) => {
+	if (!isLoggedIn) return <Login />;
 
-const Home = ({isLoggedIn}) => {
-    if(!isLoggedIn) return (<Login />)
-    return (
-        <div>this is homepage</div>
-    )
-}
+	return (
+		<section>
+			<h2>User Table</h2>
+			<div>
+				<table>
+					<thead>
+						<tr>
+							<th>Registered on</th>
+							<th>Username</th>
+							<th>Login Count</th>
+						</tr>
+					</thead>
+					<tbody>
+						{Object.values(users).map(user => {
+                            const userData = user.user;
+							return (
+								<tr key={userData.dateTime}>
+									<td>{userData.dateTime}</td>
+									<td>{userData.username}</td>
+									<td>{user.loginCount}</td>
+								</tr>
+							);
+						})}
+					</tbody>
+				</table>
+			</div>
+		</section>
+	);
+};
 
 const mapStateToProps = state => ({
-    isLoggedIn: state.user.isLoggedIn
-})
+	isLoggedIn: state.user.isLoggedIn,
+	users: state.user.users,
+});
 
-export default connect(mapStateToProps, {})(Home);
+export default connect(mapStateToProps, null)(Home);
