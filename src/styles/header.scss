@@ -73,13 +73,26 @@
         .header_logoBlock{
             
             .header__logo{
-                width: 30%
+                width: 30%;
             }
         }
 
         .header_nav{
             .menu__toggle{
                 display: none;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1000px){
+    .header{
+
+        .header_logoBlock{
+            
+            .header__logo{
+                width: 20%;
+                padding: .4rem;
             }
         }
     }

@@ -4,8 +4,10 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import useUnsavedWarning from "../hooks/useUnsavedWarning";
 import {registerUser} from "../store/reducer/user";
+import { withRouter } from "react-router-dom";
+import FormItem from "../components/FormItem";
 
-const Register = ({registerUser}) => {
+const Register = ({registerUser, history}) => {
 	const RegisterForm = {
 		username: "",
 		firstName: "",
@@ -18,9 +20,9 @@ const Register = ({registerUser}) => {
 	const [invalidPasswordFormat, setInvalidPasswordFormat] = useState(false);
 	const [invalidRepeatPassword, setInvalidRepeatPassword] = useState(false);
 	const [passwordStrength, setPasswordStrength] = useState(null);
-	const [unSavedPrompt, isDirty, isPristine] = useUnsavedWarning();
 	const { firstName, lastName, username, password, repeatPassword } = formData;
-
+	const [unSavedPrompt, isDirty, isPristine] = useUnsavedWarning();
+	
 	const passwordValidation = e => {
 		let userPassword = e ? e.target.value : password;
 		const checkCapital = userPassword.match(/[A-Z]/) !== null;
@@ -60,8 +62,9 @@ const Register = ({registerUser}) => {
 
 	const onSubmitHandler = e => {
 		e.preventDefault();
-		registerUser(formData);
 		isPristine();
+		registerUser(formData, history);
+		setFormData(RegisterForm);
 	};
 	const onChangeHandler = e => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -70,48 +73,11 @@ const Register = ({registerUser}) => {
 
 	return (
 		<form className="form" method="POST" onSubmit={onSubmitHandler}>
-			<div className="form-field">
-				<label className="form-label" htmlFor="firstName">
-					First name
-				</label>
-				<input
-					className="form-input"
-					type="text"
-					name="firstName"
-					value={firstName}
-					onChange={onChangeHandler}
-					required
-					placeholder="first name"
-				/>
-			</div>
-			<div className="form-field">
-				<label className="form-label" htmlFor="lastName">
-					Last name
-				</label>
-				<input
-					className="form-input"
-					type="text"
-					name="lastName"
-					value={lastName}
-					onChange={onChangeHandler}
-					required
-					placeholder="last name"
-				/>
-			</div>
-			<div className="form-field">
-				<label className="form-label" htmlFor="username">
-					Username
-				</label>
-				<input
-					className="form-input"
-					type="text"
-					name="username"
-					value={username}
-					onChange={onChangeHandler}
-					required
-					placeholder="Username"
-				/>
-			</div>
+			<FormItem title="First name" name="firstName" type="text" value={firstName} onChangeHandler={onChangeHandler} />
+			<FormItem title="Last name" name="lastName" type="text" value={lastName} onChangeHandler={onChangeHandler} />
+			<FormItem title="Username" name="username" type="text" value={username} onChangeHandler={onChangeHandler} />
+			<FormItem title="Username" name="username" type="text" value={username} onChangeHandler={onChangeHandler} />
+
 			<div className="form-field">
 				<label className="form-label" htmlFor="password">
 					Password
@@ -185,4 +151,4 @@ const mapStateToProps = state => ({
 
 })
 
-export default connect(mapStateToProps, { registerUser })(Register);
+export default connect(mapStateToProps, { registerUser })(withRouter(Register));

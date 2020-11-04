@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import {loginUser} from "../store/reducer/user";
 
-const Login = () => {
+const Login = ({loginUser, history}) => {
 	const IForm = {
 		username: "",
 		password: ""
@@ -14,6 +17,7 @@ const Login = () => {
 
 	const onSubmitHandler = e => {
 		e.preventDefault();
+		loginUser(formData, history);
 	};
     const onChangeHandler = e => {
 		setFormData({...formData, [e.target.name]: e.target.value})
@@ -75,4 +79,4 @@ const Login = () => {
 
 Login.propTypes = {};
 
-export default Login;
+export default connect(null, {loginUser})(withRouter(Login));
