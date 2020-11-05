@@ -48,7 +48,8 @@ export const registerUser = (formData, history) => async dispatch => {
 export const loginUser = (formData, history) => async dispatch => {
 	try {
 		const username = formData.username.toLowerCase();
-		const users = JSON.parse(localStorage.getItem("users"));
+		let users = JSON.parse(localStorage.getItem("users"));
+		if (!users) users = {};
 		let userData = users[username];
 		if (!userData || userData.user.password !== formData.password)
 			throw new Error("invalid login credentials");
