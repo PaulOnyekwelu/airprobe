@@ -1,0 +1,55 @@
+.home{
+    color: $base-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // padding: 0 $fluid-padding;
+    padding-top: 3rem;
+    width: 100%;
+
+
+    .user-table-section{
+        width: 100%;
+
+        .user-table{
+            text-align: center;
+            width: 100%;
+
+            .table_head{
+
+                tr{
+                    padding: 1rem;
+                    background-color: $base-color;
+                    color: white;
+
+                    th{
+                        padding: 1rem;
+                        border: 2px solid black;
+                    }
+                }
+            }
+
+            .table_body{
+                background-color: white;
+                color: $base-color;
+
+                tr{
+                    padding: 1rem;
+
+                    td{
+                        padding: 1rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 768px){
+    .home{
+        .user-table-section{
+            width: 80%;
+        }
+    }
+}

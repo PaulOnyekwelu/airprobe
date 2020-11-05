@@ -3,21 +3,22 @@ import { connect } from "react-redux";
 import Login from "./Login";
 
 const Home = ({ isLoggedIn, users }) => {
-	if (!isLoggedIn) return <Login />;
+    if (!isLoggedIn) return <Login />;
+    console.log(localStorage)
 
 	return (
-		<section>
+		<section className="home">
 			<h2>User Table</h2>
-			<div>
-				<table>
-					<thead>
+			<div className="user-table-section">
+				<table className="user-table">
+					<thead className="table_head">
 						<tr>
 							<th>Registered on</th>
 							<th>Username</th>
 							<th>Login Count</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody className="table_body">
 						{Object.values(users).map(user => {
                             const userData = user.user;
 							return (
