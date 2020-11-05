@@ -27,6 +27,7 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  min-height: 90vh;
 }
 
 @import './styles/utility';
@@ -34,3 +35,4 @@ body {
 @import './styles/nav.scss';
 @import './styles/form.scss';
 @import './styles/home.scss';
+@import './styles/mapsection.scss';

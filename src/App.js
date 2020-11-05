@@ -9,6 +9,8 @@ import { persistLogin } from "./store/reducer/user";
 
 const Register = lazy(() => import("./pages/Register"));
 const Login = lazy(() => import("./pages/Login"));
+const MapSection = lazy(() => import("./pages/MapSection"))
+
 
 toast.configure();
 function App({ persistLogin }) {
@@ -27,6 +29,7 @@ function App({ persistLogin }) {
 						<Route exact path="/" component={Home} />
 						<Route exact path="/login" component={Login} />
 						<Route exact path="/register" component={Register} />
+						<Route exact path="/map" component={MapSection} />
 					</Switch>
 				</Suspense>
 			</div>
