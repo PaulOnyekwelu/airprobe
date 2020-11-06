@@ -4,11 +4,10 @@ import Login from "./Login";
 
 const Home = ({ isLoggedIn, users }) => {
     if (!isLoggedIn) return <Login />;
-    console.log(localStorage)
 
 	return (
 		<section className="home">
-			<h2>User Table</h2>
+			<h2>Users Table</h2>
 			<div className="user-table-section">
 				<table className="user-table">
 					<thead className="table_head">
