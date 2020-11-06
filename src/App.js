@@ -7,6 +7,7 @@ import 'mapbox-gl/dist/mapbox-gl.css';
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import { persistLogin } from "./store/reducer/user";
+import Spinner from "./components/Spinner";
 
 const Register = lazy(() => import("./pages/Register"));
 const Login = lazy(() => import("./pages/Login"));
@@ -25,7 +26,7 @@ function App({ persistLogin }) {
 				<Header />
 			</div>
 			<div className="app_main">
-				<Suspense fallback={<div>loading...</div>}>
+				<Suspense fallback={<Spinner />}>
 					<Switch>
 						<Route exact path="/" component={Home} />
 						<Route exact path="/login" component={Login} />

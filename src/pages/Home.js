@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import Login from "./Login";
 
 const Home = ({ isLoggedIn, users }) => {
@@ -34,6 +35,11 @@ const Home = ({ isLoggedIn, users }) => {
 		</section>
 	);
 };
+
+Home.propsTypes = {
+	isLoggedIn: PropTypes.bool.isRequired,
+	users: PropTypes.object
+}
 
 const mapStateToProps = state => ({
 	isLoggedIn: state.user.isLoggedIn,

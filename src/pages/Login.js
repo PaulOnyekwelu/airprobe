@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 import {loginUser} from "../store/reducer/user";
 
@@ -77,6 +78,8 @@ const Login = ({loginUser, history}) => {
 	);
 };
 
-Login.propTypes = {};
+Login.propTypes = {
+	loginUser: PropTypes.func
+};
 
 export default connect(null, {loginUser})(withRouter(Login));

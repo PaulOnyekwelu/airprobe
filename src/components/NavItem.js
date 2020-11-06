@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const NavItem = ({ title, link }) => {
 	return (
@@ -10,5 +11,10 @@ const NavItem = ({ title, link }) => {
 		</div>
 	);
 };
+
+NavItem.propTypes = {
+	title: PropTypes.string.isRequired,
+	link: PropTypes.string.isRequired
+}
 
 export default NavItem;

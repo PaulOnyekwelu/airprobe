@@ -42,6 +42,7 @@ Nav.propTypes = {
 	showMenu: PropTypes.bool.isRequired,
 	toggleMenu: PropTypes.func.isRequired,
 	isLoggedIn: PropTypes.bool.isRequired,
+	logoutUser: PropTypes.func
 };
 
 const mapStateToProps = state => ({

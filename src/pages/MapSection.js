@@ -32,7 +32,7 @@ const MapSection = () => {
 				</Marker>
 				{selected && (
 					<Popup latitude={53.311679} longitude={-113.311679} onClose={() => setSelected(false)}>
-						<div style={{width:"350px", padding: "1rem"}}>
+						<div style={{width:"300px", padding: "1rem"}}>
 							<img src={PopupImg} style={{width:"100%"}} alt="University of Alberta" />
 							<h2>University of Alberta</h2>
 							<p>The great citadel of learning. I aspire to get a bachelors or masters degree from the University someday.</p>
